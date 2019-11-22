@@ -1,8 +1,11 @@
 import os
 import shutil
 
-PATH = input('Enter full path to directory that will be sorted: ')
-
+user_input = input("Enter full path to directory that will be sorted: ").replace("\\", '/')
+if  user_input.endswith('/'):
+    PATH = user_input
+else:
+    PATH = user_input + '/'
 # <----------------------- Funcions ----------------------->
 def files(path):
     for file in os.listdir(path):
@@ -32,3 +35,5 @@ else:
         
 if __name__ == '__main__':
     move_files(list_of_files)
+    print('Finished sorting ' + PATH)
+    input('Press ENTER to close...')
